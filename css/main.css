@@ -115,7 +115,7 @@ button{
     
     overflow: hidden;
     transition: all 0.4s ease-in-out;
-/*    visibility: hidden;*/
+    visibility: hidden;
     pointer-events: none;
     object-fit: cover;
 }

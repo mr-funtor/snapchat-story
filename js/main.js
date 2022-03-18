@@ -23,15 +23,11 @@ allStoriesCase.forEach((item,index)=>{
 //let's the inner images move with the parent container
 storiesMainBody.addEventListener('scroll',()=>{
     allStoriesCase.forEach((item,index)=>{
-        alternateStory2[index].style.height=item.getBoundingClientRect().height;
-        alternateStory2[index].style.width=item.getBoundingClientRect().width;
-        alternateStory2[index].style.top=item.getBoundingClientRect().top;
         alternateStory2[index].style.left=item.getBoundingClientRect().left;
     })
 })
 
 
-let presentAltStory;
 
 function expandStory(e){
     let imageName=e.currentTarget.dataset.image;
@@ -39,17 +35,18 @@ function expandStory(e){
 
     e.currentTarget.style.position='static';
     
-    theStory=e.currentTarget;
+    theStory=e.currentTarget;//this tracks the current story on display
     
     allStoriesCase.forEach((item,index)=>{
         if(e.currentTarget===item){
-            presentAltStory=alternateStory2[index];
-            presentAltStory.classList.add('expand');
+            
+            //changes the size of the inner image to fit the screen
+            alternateStory2[index].classList.add('expand');
             alternateStory2[index].style.left=item.getBoundingClientRect().left;
-            presentAltStory.style.left=theMainTag.getBoundingClientRect().left;
-            presentAltStory.style.height='100%';
-            presentAltStory.style.width='40%';
-            presentAltStory.style.top='0px';
+            alternateStory2[index].style.left=theMainTag.getBoundingClientRect().left;
+            alternateStory2[index].style.height='100%';
+            alternateStory2[index].style.width='40%';
+            alternateStory2[index].style.top='0px';
             alternateStory2[index].style.visibility='visible';
         }
     })
@@ -68,6 +65,8 @@ backButton.addEventListener('click',backToMainScreen)
 function backToMainScreen(){
     allStoriesCase.forEach((item,index)=>{
         if(theStory===item){
+            
+            //this returns the image back to being small
            alternateStory2[index].classList.remove('expand');
            alternateStory2[index].style.height=item.getBoundingClientRect().height;
         alternateStory2[index].style.width=item.getBoundingClientRect().width;
